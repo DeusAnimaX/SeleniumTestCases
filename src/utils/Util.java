@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class Util {
 	
 	public static String getMacChromeDriver() {
-		String url = "/Users/sofia/Documents/workspace/WebDriverTest/chromedriver";
+		String url = "chromedriver";
 		return url;
 	}
 	
@@ -17,7 +17,7 @@ public class Util {
 	}
 	
 	public static WebDriver getDriver() {
-		System.setProperty("webdriver.chrome.driver", Util.getWinChromeDriver());
+		System.setProperty("webdriver.chrome.driver", Util.getMacChromeDriver());
 		WebDriver driver = new ChromeDriver();
 		return driver;
 	}

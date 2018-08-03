@@ -10,6 +10,7 @@ import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -28,7 +29,47 @@ public class TestCases {
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		testCase5(Util.getDriver());
+		testCase2(Util.getDriver());
+	}
+	
+	public static void testCase2(WebDriver driver) throws Exception {
+		Boolean result = false;
+        // Carga la pagina web
+        driver.get("http://demo.nopcommerce.com/wishlist");
+
+        String xpath = "//div[@class='no-data']";
+
+        // Obtiene el mensaje 'The wish list is empty';
+        String message = driver.findElement(By.xpath(xpath)).getText();
+
+        if(message.equals("The wishlist is empty!")){
+            String searchBarPath = "//input[@id='small-searchterms']";
+            //ingresa el texto de busqueda y ejecuta un enter
+            driver.findElement(By.xpath(searchBarPath)).sendKeys("Fahrenheit 451"+Keys.ENTER);
+            String btnWishPath = "//input[@class='button-2 add-to-wishlist-button']";
+            //agrega el libro al wish list
+            driver.findElement(By.xpath(btnWishPath)).click();
+			Thread.sleep(3000);
+
+            String btnWishList = "//a[@class='ico-wishlist']";
+            //regresa a la pagina de whishlist
+            driver.findElement(By.xpath(btnWishList)).click();
+			Thread.sleep(3000);
+
+
+            //verifica si agrego el libro Fahrenheit 451
+            String wishListItem = "//a[@class='product-name']";
+            String wishItemName = driver.findElement(By.xpath(wishListItem)).getText();
+            result = wishItemName.contains("Fahrenheit 451");
+        }
+
+        // Ejecuta codigo JavaScript para mostrar un popup
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        if(result)
+            js.executeScript("alert('Test finalized successfully!')");
+        else
+            js.executeScript("alert('Test finalized with errors!')");
+	
 	}
 	
 	public static void testCase5(WebDriver driver) throws Exception {
