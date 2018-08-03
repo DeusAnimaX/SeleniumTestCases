@@ -11,14 +11,19 @@ public class Util {
 		return url;
 	}
 	
+	public static String getWinChromeDriver() {
+		String url = "chromedriver.exe";
+		return url;
+	}
+	
 	public static WebDriver getDriver() {
-		System.setProperty("webdriver.chrome.driver", Util.getMacChromeDriver());
+		System.setProperty("webdriver.chrome.driver", Util.getWinChromeDriver());
 		WebDriver driver = new ChromeDriver();
 		return driver;
 	}
 	
 	public static String getFilePath() {
-		return "/Users/sofia/Downloads";
+		return "";
 	}
 	
 	public static String getFileName() {
