@@ -11,8 +11,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ReadData {
 	
-	public static Sheet readExcel() throws Exception {
-		 File file =    new File(Util.getFilePath()+"/"+Util.getFileName());
+	public static Sheet readExcel() throws Exception { 
+		 File file =    new File(Util.getFilePath()+Util.getFileName());
 		 FileInputStream inputStream = new FileInputStream(file);
 		 Workbook guru99Workbook = new XSSFWorkbook(inputStream);
 		 Sheet guru99Sheet = guru99Workbook.getSheet(Util.getSheetName());
