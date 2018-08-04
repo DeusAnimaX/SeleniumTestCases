@@ -17,7 +17,7 @@ public class Util {
 	}
 	
 	public static WebDriver getDriver() {
-		System.setProperty("webdriver.chrome.driver", Util.getMacChromeDriver());
+		System.setProperty("webdriver.chrome.driver", Util.getWinChromeDriver());
 		WebDriver driver = new ChromeDriver();
 		return driver;
 	}
