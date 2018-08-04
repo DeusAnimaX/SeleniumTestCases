@@ -34,7 +34,7 @@ public class TestCases {
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		testCase4(Util.getDriver());
+		testCase5(Util.getDriver());
 	}
 	
 	public static void testCase1(WebDriver driver) throws Exception {
@@ -143,7 +143,6 @@ public class TestCases {
 			Row row = sheet.getRow(i);
 			addItemToCart(row.getCell(0).getStringCellValue(),formatter.formatCellValue(row.getCell(1)),formatter.formatCellValue(row.getCell(2)), driver);
 		}
-		
 	}
 	
 	public static void addItemToCart(String name, String quantity, String total, WebDriver driver) throws InterruptedException {
@@ -184,8 +183,5 @@ public class TestCases {
 			WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(btnWishlist)));
 			element.click();
 		}
-		
 	}
-	
-	
 }
