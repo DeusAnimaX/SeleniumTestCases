@@ -35,6 +35,9 @@ public class TestCases {
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
+		testCase1(Util.getDriver());
+		testCase2(Util.getDriver());
+		testCase4(Util.getDriver());
 		testCase5(Util.getDriver());
 	}
 	
@@ -71,7 +74,12 @@ public class TestCases {
 		
 		// Ejecuta codigo JavaScript para mostrar un popup
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("alert('Test finalized successfully!')");
+		js.executeScript("alert('Test 1 finalized successfully!')");
+				
+		// Espera a que el popup sea clickeado y cierra el browser
+		wait.until(ExpectedConditions.alertIsPresent());
+		wait.until(ExpectedConditions.not(ExpectedConditions.alertIsPresent()));
+		driver.close();
     }
 
 	public static void testCase2(WebDriver driver) throws Exception {
@@ -263,6 +271,7 @@ public class TestCases {
 			Row row = sheet.getRow(i);
 			addItemToCart(row.getCell(0).getStringCellValue(),formatter.formatCellValue(row.getCell(1)),formatter.formatCellValue(row.getCell(2)), driver);
 		}
+		out.println("Test Case 5 Success");
 	}
 	
 	public static void addItemToCart(String name, String quantity, String total, WebDriver driver) throws InterruptedException {

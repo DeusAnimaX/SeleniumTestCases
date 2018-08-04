@@ -14,9 +14,9 @@ public class ReadData {
 	public static Sheet readExcel() throws Exception { 
 		 File file =    new File(Util.getFilePath()+Util.getFileName());
 		 FileInputStream inputStream = new FileInputStream(file);
-		 Workbook guru99Workbook = new XSSFWorkbook(inputStream);
-		 Sheet guru99Sheet = guru99Workbook.getSheet(Util.getSheetName());
-		 return guru99Sheet;
+		 Workbook workbook = new XSSFWorkbook(inputStream);
+		 Sheet sheet = workbook.getSheet(Util.getSheetName());
+		 return sheet;
 	}
 
 }
